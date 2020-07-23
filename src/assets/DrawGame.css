@@ -1,0 +1,53 @@
+.titleDrawGame::before,
+.titleDrawGame::after {
+  width: calc(50% - 230px);
+}
+.drawBox {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5%;
+}
+
+.drawBox h2 {
+  display: block;
+}
+.drawBox div {
+  min-width: 300px;
+}
+.drawBox .btn,
+.drawBox .clearStyle {
+  outline: none;
+  color: #fff;
+  margin: 15px;
+}
+
+.drawBox .btn:hover,
+.drawBox .clearStyle:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.drawBox .clearStyle:disabled {
+  opacity: 1;
+  cursor: no-drop;
+}
+
+.drawBox .clearStyle {
+  color: #fff;
+  background: #ff88bb;
+  border: solid #ff88bb 1px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .drawBox {
+    display: block;
+  }
+  .drawBox div {
+    margin: 0 auto 5%;
+    min-width: auto;
+  }
+}
