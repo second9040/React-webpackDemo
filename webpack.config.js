@@ -1,17 +1,18 @@
-const path = require("path"); // //引用path模組
+const path = require("path"); // 引用path模組
 module.exports = {
-  entry: ["./index.js", "./app.jsx"], //如果有一個以上的檔案需要打包，可以傳陣列給entry
+  entry: ["./index.js", "./app.jsx"], // 如果有一個以上的檔案需要打包，可以傳陣列給entry
   output: {
     filename: "bundle.js", // 打包後的檔案名稱
-    path: path.resolve(__dirname, "./"), //打包後的路徑，這裡使用path模組的resolve()取得絕對位置，也就是目前專案的根目錄
+    path: path.resolve(__dirname, "./dist"),
+    // 打包後的路徑，這裡使用path模組的resolve()，可以看到其實目前專案裡面還沒有 dist 資料夾。這邊純粹是我習慣把把包完的東西塞進一個特定資料夾，比較整齊。
   },
 
   devServer: {
     hot: true,
   },
-  //將loader的設定寫在module的rules屬性中
+  // 將loader的設定寫在module的rules屬性中
   module: {
-    //rules的值是一個陣列可以存放多個loader物件
+    // rules的值是一個陣列可以存放多個loader物件
     rules: [
       {
         // 編譯 JSX
@@ -37,6 +38,19 @@ module.exports = {
         // 編譯 css 樣式檔
         test: /\.css$/,
         loader: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+        loader: "file-loader",
+        options: {
+          name(resourcePath) {
+            // `resourcePath` - `/absolute/path/to/file.js`
+            if (/(woff|woff2|eot|ttf)/.test(resourcePath)) {
+              return "font/[name].[ext]";
+            }
+            return "image/[name].[ext]";
+          },
+        },
       },
     ],
   },

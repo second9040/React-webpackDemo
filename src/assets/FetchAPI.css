@@ -1,0 +1,106 @@
+.fetchAPI::before,
+.fetchAPI::after {
+  width: calc(50% - 80px);
+}
+
+.data-display {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.data-display input {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 3px;
+  width: 300px;
+  text-align: right;
+}
+
+.data-display input:focus {
+  border: solid #999 1px;
+}
+
+.data-display .btnStyle {
+  width: 300px;
+}
+
+.inlineTitleBox {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: -40px;
+  justify-content: center;
+  background: #fff;
+  z-index: 5;
+}
+
+.inlineTitle {
+  font-size: 16px;
+  outline: none;
+  border: none;
+  color: #999;
+  padding: 10px;
+  border-radius: 5px;
+  background: none;
+}
+
+.resField {
+  margin: 20px;
+  border: solid #eee;
+  border-radius: 5px;
+  color: #666;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  width: 85%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.resField div {
+  margin: 10px;
+  background: #ddd;
+  width: 230px;
+  padding: 3px;
+  border-radius: 2px;
+}
+
+.resField a {
+  text-decoration: none;
+  color: #666;
+}
+.resField div:hover {
+  background: #ffe9e8;
+}
+
+.resField div:hover a {
+  color: red;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 350px) {
+  .data-display input,
+  .data-display .btnStyle {
+    width: 80vw;
+  }
+  .resField {
+    padding: 20px 0 0;
+    margin: 20px 20px 0;
+    display: initial;
+    border: none;
+  }
+
+  .resField div {
+    margin: 10px 0;
+    background: #ddd;
+    border-radius: 3px;
+    padding: 5px;
+    width: auto;
+  }
+
+  .resField a {
+    background: none;
+  }
+}

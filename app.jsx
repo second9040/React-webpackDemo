@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import DrawGame from "./src/views/DrawGame.jsx";
 import ProgressBar from "./src/views/ProgressBar.jsx";
+import FetchAPI from "./src/views/FetchAPI.jsx";
 import "./index.js";
 
 ReactDOM.render(
   <div>
+    <FetchAPI />
     <ProgressBar />
     <DrawGame>
       <span>

@@ -80,6 +80,36 @@ input {
   margin: 20px 0;
 }
 
+.loading {
+  color: #f79f75;
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transition: -webkit-transform 1s linear;
+  transition: transform 1s linear;
+  -webkit-animation: spin 1s linear 1s 5 alternate;
+  animation: spin 1.2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .titleContainer {
     border-top: solid #ddd 5px;
