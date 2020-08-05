@@ -65,6 +65,9 @@
   width: 230px;
   padding: 3px;
   border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .resField a {
