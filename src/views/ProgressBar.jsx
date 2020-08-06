@@ -13,12 +13,22 @@ const ProgressBar = () => {
     }
   };
   let holdDown = (operate) => {
-    setProgressValue((progressValue) => Number(progressValue) + operate);
+    setProgressValue((progressValue) =>
+      (progressValue > 0 && operate === -1) ||
+      (progressValue < 100 && operate === 1)
+        ? Number(progressValue) + operate
+        : progressValue
+    );
     let time = new Date();
     setInterval(() => {
       let nowTime = new Date();
       if (nowTime.getTime() - time.getTime() > 500) {
-        setProgressValue((progressValue) => Number(progressValue) + operate);
+        console.log(progressValue);
+        setProgressValue((progressValue) =>
+          progressValue > 0 && progressValue < 100
+            ? Number(progressValue) + operate
+            : progressValue
+        );
       }
     }, 100);
   };
