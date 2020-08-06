@@ -2,7 +2,7 @@ import React from "react";
 import "./../assets/ProgressBar.css";
 
 const ProgressBar = () => {
-  const [progressValue, setProgressValue] = React.useState(70);
+  const [progressValue, setProgressValue] = React.useState(50);
   const [progressWidth, setProgressWidth] = React.useState("");
 
   let getProgressBarWidth = () => {
@@ -23,14 +23,13 @@ const ProgressBar = () => {
     setInterval(() => {
       let nowTime = new Date();
       if (nowTime.getTime() - time.getTime() > 500) {
-        console.log(progressValue);
         setProgressValue((progressValue) =>
           progressValue > 0 && progressValue < 100
             ? Number(progressValue) + operate
             : progressValue
         );
       }
-    }, 100);
+    }, 30);
   };
   let holdUp = () => {
     for (let i = 1; i < 99999; i++) {
@@ -105,6 +104,44 @@ const ProgressBar = () => {
       height: progressValue === "" ? "0.1%" : `${progressValue}%`,
     };
   };
+
+  let FastSetBtn = (props) => {
+    return (
+      <button
+        className={
+          progressValue === props.value ? "fastBtn selected" : "fastBtn"
+        }
+        onClick={() => {
+          props.value > progressValue
+            ? animateCalc(1, props.value)
+            : animateCalc(-1, props.value);
+        }}
+      >
+        {props.value === "" ? 0 : props.value}
+      </button>
+    );
+  };
+
+  let animateCalc = (operate, newValue) => {
+    let oriValue = progressValue === "" ? 0 : progressValue;
+    let animate = setInterval(() => {
+      if (
+        (progressValue > 0 && progressValue < 100) ||
+        (progressValue === "" && operate === 1) ||
+        (progressValue === 100 && operate === -1)
+      ) {
+        setProgressValue(oriValue + operate);
+        oriValue += operate;
+      }
+      if (oriValue === newValue) {
+        clearInterval(animate);
+      }
+      if ((newValue === "" || newValue === 0) && oriValue === 0) {
+        setProgressValue("");
+        clearInterval(animate);
+      }
+    }, 10);
+  };
   return (
     <div>
       <div className="titleContainer">
@@ -123,16 +160,21 @@ const ProgressBar = () => {
               placeholder="輸入1~100以內的整數數字"
               onChange={(event) => {
                 let value = event.target.value;
-                if (
-                  /^[1-9]{1}\d?$/.test(value) ||
-                  value === "" ||
-                  value === "100"
-                ) {
-                  setProgressValue(value);
+                if (/^[1-9]{1}\d?$/.test(value) || value === "100") {
+                  Number(value) < Number(progressValue)
+                    ? animateCalc(-1, Number(value))
+                    : animateCalc(1, Number(value));
+                } else if (value === "") {
+                  animateCalc(-1, "");
                 }
               }}
             ></input>
             <OperateButton type={1} operatetion="+" className="btnStyle add" />
+          </div>
+          <div className="fastSetField">
+            <FastSetBtn value={""}></FastSetBtn>
+            <FastSetBtn value={50}></FastSetBtn>
+            <FastSetBtn value={100}></FastSetBtn>
           </div>
           <div style={barContainerStyle()}>
             <div style={barStyle()}></div>

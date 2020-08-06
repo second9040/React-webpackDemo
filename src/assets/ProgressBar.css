@@ -34,6 +34,25 @@
   margin: 20px 0;
 }
 
+.fastBtn {
+  border: none;
+  background: #ddd;
+  border-radius: 3px;
+  margin: 10px;
+  padding: 5px;
+  width: 50px;
+  transition: background 0.3s;
+  outline: none;
+  cursor: pointer;
+}
+
+.fastBtn:hover,
+.selected {
+  border: #aaa;
+  color: #fff;
+  background: #39ccf0;
+}
+
 @media screen and (max-width: 350px) {
   .forMobileLayout {
     display: flex;
@@ -55,12 +74,16 @@
   .progressContainer input {
     order: 2;
     margin: 20px;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     text-align: center;
   }
 
   .progressContainer .sub {
     order: 3;
+  }
+
+  .fastSetField {
+    display: none;
   }
 }
