@@ -47,14 +47,14 @@ const DrawGame = (props) => {
       <div style={{ color: "#bbb" }}>抽到 {draw} ... 銘謝惠顧</div>
     );
   };
-  let childrenArr = (children) => {
-    let i = 0;
-    let returnTmp = [];
-    while (i < children.length) {
-      returnTmp.push(<li key={i}>{children[i++]}</li>);
-    }
-    return returnTmp;
-  };
+  // let childrenArr = (children) => {
+  //   let i = 0;
+  //   let returnTmp = [];
+  //   while (i < children.length) {
+  //     returnTmp.push(<li key={i}>{children[i++]}</li>);
+  //   }
+  //   return returnTmp;
+  // };
 
   return (
     <div className="drawGame">
@@ -76,7 +76,7 @@ const DrawGame = (props) => {
         </button>
         <DrawResult />
       </div>
-      <div className="instruction">
+      {/* <div className="instruction">
         <h3>使用 props.children 傳入 array</h3>
         <ul>{childrenArr(props.children)}</ul>
       </div>
@@ -96,7 +96,7 @@ const DrawGame = (props) => {
             亂數數字有做處理，本次與上一次相同時重新取值，確保連續兩次的結果不會相同。
           </li>
         </ul>
-      </div>
+      </div> */}
       <div className="instruction">
         <h3>功能說明(陣列)</h3>
         <ul>

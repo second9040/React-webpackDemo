@@ -1,0 +1,87 @@
+.header {
+  margin: 10px 5%;
+}
+
+.pageTitle a {
+  font-size: 24px;
+}
+
+.pageTitle a:hover {
+  color: #f72b8c;
+}
+
+.header .pageList a {
+  float: right;
+  margin: -30px 20px 20px;
+  text-decoration: none;
+  transition: all 0.4s;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.header .pageList a:hover {
+  color: #f72b8c;
+  text-decoration: underline;
+  background: #feeff7;
+}
+
+.header .pageList a::after,
+.header .pageList a:nth-child(3)::before {
+  content: "";
+  height: 15px;
+  width: 1px;
+  background: #000;
+  position: absolute;
+  margin: 5px 20px;
+}
+
+.header .pageList a:nth-child(3)::before {
+  margin: 5px -20px;
+}
+
+@media screen and (max-width: 750px) {
+  .header .pageList a {
+    float: none;
+  }
+  .header .pageList {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header .pageList a {
+    margin: 10px 20px;
+  }
+
+  .header .pageList a:nth-child(3)::before {
+    margin: 5px -260px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header .pageList {
+    display: block;
+    margin: 20px;
+  }
+
+  .header .pageList a {
+    text-align: center;
+    display: block;
+    background: #feeff7;
+  }
+
+  .header .pageList a::after,
+  .header .pageList a:nth-child(3)::before {
+    height: 0;
+  }
+}
+
+@media screen and (max-width: 200px) {
+  .header .pageList {
+    margin: 20px 0px;
+  }
+
+  .header .pageList a {
+    margin: 10px 0;
+  }
+}
